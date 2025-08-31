@@ -1,0 +1,8 @@
+Semantic Error Report:
+
+Error at line 20, column 5: Duplicate selector ''app-root'' in component 'DuplicateProductListComponent'
+Error at line 29, column 1: Component 'MyComponent' has no selector defined
+Error at line 45, column 1: Standalone component 'NoTemplateComponent' must have a template or templateUrl
+Error at line 4, column 1: Injectable 'MyService' does not specify providedIn
+
+Total errors: 4

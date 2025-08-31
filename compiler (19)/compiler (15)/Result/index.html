@@ -1,0 +1,46 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Product Catalog</title><link rel="stylesheet" href="styles.css"></head><body><div id="app">    <div class="container">        <!-- شريط التنقل -->        <div class="navbar">            <ul class="nav-links">                <li><a href="#" class="active" onclick="showPage('display')">عرض المنتجات</a></li>                <li><a href="#" onclick="showPage('add')">إضافة منتج</a></li>            </ul>        </div>        <!-- مؤشر الصفحة الحالية -->        <div class="current-page" id="current-page">عرض المنتجات</div>        <div class="modal">
+    <div class="container">
+      <button class="add-button" onclick="appComponent.openAddModal()">
+        إضافة منتج
+      </button>
+
+      <!-- Product Display Area -->
+      <div class="product-details" data-if="appComponent.selectedProduct" style="display: none;">
+        <h2><span data-bind="appComponent.selectedProduct?.name"></span></h2>
+        <img src="" alt="" class="product-image" id="selected-product-image">
+        <p><span data-bind="appComponent.selectedProduct?.details"></span></p>
+      </div>
+
+      <div class="product-list" id="product-list">
+                <!-- Products will be dynamically added here -->
+            </div>
+
+      <!-- Modal Backdrop -->
+      <div class="modal-backdrop" data-if="appComponent.showAddModal" style="display: none;" onclick="appComponent.closeAddModal()"></div>
+
+    <!-- Add Product Modal -->
+<div class="modal" data-if="appComponent.showAddModal" style="display: none;">
+  <div class="add-form"></div>
+</div>
+    </div>
+  
+    <div class="add-form">
+      <h2>إضافة منتج جديد</h2>
+      <button class="close-button" onclick="addProductComponent.close.emit()">×</button>
+      <form onsubmit="addProductComponent.addProduct(); return false;">
+        <label>
+          الاسم:
+          <input type="text" id="product-name" required />
+        </label>
+        <label>
+          رابط الصورة:
+          <input type="text" id="product-image" required />
+        </label>
+        <label>
+          التفاصيل:
+          <textarea id="product-details" required></textarea>
+        </label>
+        <button type="submit">إضافة</button>
+      </form>
+    </div>
+          </div>    </div></div><script src="app.js"></script></body></html>

@@ -1,0 +1,14 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-message',
+  template: `
+    <h3>مرحباً!</h3>
+    <button (click)="showAlert()">إظهار التحية</button>
+  `
+})
+export class MessageComponent {
+  showAlert() {
+    alert('أهلاً وسهلاً!');
+  }
+}

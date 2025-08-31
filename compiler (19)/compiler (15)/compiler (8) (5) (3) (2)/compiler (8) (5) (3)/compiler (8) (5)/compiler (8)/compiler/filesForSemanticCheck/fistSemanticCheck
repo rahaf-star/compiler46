@@ -1,0 +1,119 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+    <div class="container">
+      <div class="product-details" *ngIf="selectedProduct">
+        <h2>{{ selectedProduct.name }}</h2>
+        <img [src]="selectedProduct.image" alt="{{ selectedProduct.name }}" class="product-image" />
+        <p>{{ selectedProduct.details }}</p>
+      </div>
+
+      <div class="product-list">
+        <div
+          class="product-item"
+          *ngFor="let product of products"
+          (click)="selectProduct(product)">
+          <h3>{{ product.name }}</h3>
+          <img [src]="product.image" alt="{{ product.name }}" class="product-image" />
+        </div>
+      </div>
+    </div>
+  `,
+  styles: [`
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .product-details {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .product-image {
+      max-width: 200px;
+      height: auto;
+      margin-top: 10px;
+    }
+    .product-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .product-item {
+      margin: 10px;
+      cursor: pointer;
+    }
+    .product-item h3 {
+      margin: 10px 0;
+    }
+  `]
+})
+export class AppComponent {
+  title = 'Product Catalog';
+
+  // 🟥 خطأ: استخدام نوع غير معرف في البيئة
+  selectedProduct: ProductTypeX | null = null; // ❌ ProductTypeX غير معرف
+
+  products = [
+    { name: 'Product 1', image: 'assets/product1.jpg', details: 'Details of Product 1' },
+    { name: 'Product 2', image: 'assets/product2.jpg', details: 'Details of Product 2' },
+    { name: 'Product 3', image: 'assets/product3.jpg', details: 'Details of Product 3' }
+  ];
+
+  // الدالة الأصلية
+  selectProduct(product: any) {
+    this.selectedProduct = product;
+  }
+
+  // 🟥 خطأ دلالي: تكرار الدالة (سيسبب خطأ في الترجمة)
+  selectProduct(product: any) {
+
+    this.selectedProduct = product;
+  }
+}
+
+// 🟥 خطأ دلالي: مكرر نفس الـ selector السابق (app-root)
+@Component({
+  selector: 'app-root', // ❌ Duplicate selector
+  standalone: true,
+  template: `<p>Duplicate Component</p>`
+})
+export class DuplicateProductListComponent {}
+
+// 🟥 خطأ دلالي: Component بدون selector (غير مكتمل)
+@Component({
+  standalone: true,
+  template: `<p>No selector defined</p>`
+})
+export class NoSelectorComponent {}
+@Component({
+  selector: 'app-standalone',
+  standalone: true
+  // لا يوجد template ولا templateUrl
+})
+export class AppStandalone {}
+@Component({
+  selector: "my-app",
+  standalone: true,
+  template: `<h1>Hello</h1>`
+})
+class AppComponent {
+  let count: number = 5;
+  let count: string = "duplicate";  // ❌ خطأ دلالي: تكرار اسم المتغير
+}
+
+
+
+
+
+
+
+
+
+
+
+

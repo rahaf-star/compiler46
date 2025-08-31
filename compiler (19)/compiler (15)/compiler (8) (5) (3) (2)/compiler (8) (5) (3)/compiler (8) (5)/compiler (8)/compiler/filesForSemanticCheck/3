@@ -1,0 +1,19 @@
+import { Component } from '@angular/core';
+
+// Component بدون selector -> هذا هو الخطأ الدلالي
+@Component({
+  // selector مفقود عمدًا
+  template: `<h1>Hello World</h1>`
+})
+export class MyComponent {
+  constructor() {}
+}
+
+// Component صحيح (للمقارنة)
+@Component({
+  selector: 'app-valid',
+  template: `<p>Valid Component</p>`
+})
+export class ValidComponent {
+  constructor() {}
+}

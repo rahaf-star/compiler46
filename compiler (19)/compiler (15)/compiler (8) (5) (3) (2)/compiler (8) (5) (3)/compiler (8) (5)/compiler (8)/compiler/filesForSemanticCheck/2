@@ -1,0 +1,8 @@
+@Component({
+  selector: 'app-root',
+    selector: 'app-root',
+
+  standalone: true,
+  template: `<p>Duplicate Component</p>`
+})
+export class DuplicateProductListComponent {}

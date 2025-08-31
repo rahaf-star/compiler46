@@ -1,0 +1,17 @@
+import { Injectable } from '@angular/core';
+
+// Injectable بدون providedIn -> هذا هو الخطأ الدلالي
+@Injectable({
+  // providedIn مفقود عمدًا
+})
+export class MyService {
+  constructor() {}
+}
+
+// Injectable صحيح (للمقارنة)
+@Injectable({
+  providedIn: 'root'
+})
+export class ValidService {
+  constructor() {}
+}

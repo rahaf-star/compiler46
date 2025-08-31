@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Product Catalog</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+    <div class="container">
+      <button class="add-button" onclick="appComponent.openAddModal()">
+        إضافة منتج
+      </button>
+
+      <!-- Product Display Area -->
+      <div class="product-details" data-if="appComponent.selectedProduct " style="display: none;">
+        <h2><span data-bind="appComponent.selectedProduct.name "></span></h2>
+        <img src="" data-bind="appComponent.selectedProduct.image" alt="" data-bind="appComponent.selectedProduct.name " class="product-image" />
+        <p><span data-bind="appComponent.selectedProduct.details "></span></p>
+      </div>
+
+      <div class="product-list">
+        <div
+          class="product-item"
+          data-for="appComponent.products" data-item="product"
+          onclick="appComponent.selectProduct(product)">
+          <h3><span data-bind="appComponent.product.name "></span></h3>
+          <img src="" data-bind="appComponent.product.image" alt="" data-bind="appComponent.product.name " class="product-image" />
+        </div>
+      </div>
+
+      <!-- Modal Backdrop -->
+      <div class="modal-backdrop" data-if="appComponent.showAddModal" style="display: none;" onclick="appComponent.closeAddModal()"></div>
+
+    <!-- Add Product Modal -->
+<div class="modal" data-if="appComponent.showAddModal" style="display: none;">
+  <div class="add-form"></div>
+</div>
+    </div>
+  
+    <div class="add-form">
+      <h2>إضافة منتج جديد</h2>
+      <button class="close-button" onclick="appComponent.close.emit()">×</button>
+      <form onsubmit="addProduct(); return false;">
+        <label>
+          الاسم:
+          <input type="text" id="name" required />
+        </label>
+        <label>
+          رابط الصورة:
+          <input type="text" id="image" required />
+        </label>
+        <label>
+          التفاصيل:
+          <textarea id="details" required></textarea>
+        </label>
+        <button type="submit">إضافة</button>
+      </form>
+    </div>
+  
+</div>
+<script>
+
+
+</script>
+</body>
+</html>

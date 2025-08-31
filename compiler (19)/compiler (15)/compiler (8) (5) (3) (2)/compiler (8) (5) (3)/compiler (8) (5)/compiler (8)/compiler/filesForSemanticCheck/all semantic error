@@ -1,0 +1,50 @@
+import { Injectable } from '@angular/core';
+
+// Injectable بدون providedIn -> هذا هو الخطأ الدلالي
+@Injectable({
+  // providedIn مفقود عمدًا
+})
+export class MyService {
+  constructor() {}
+}
+
+// Injectable صحيح (للمقارنة)
+@Injectable({
+  providedIn: 'root'
+})
+export class ValidService {
+  constructor() {}
+}
+@Component({
+  selector: 'app-root',
+    selector: 'app-root',
+
+  standalone: true,
+  template: `<p>Duplicate Component</p>`
+})
+export class DuplicateProductListComponent {}
+import { Component } from '@angular/core';
+
+// Component بدون selector -> هذا هو الخطأ الدلالي
+@Component({
+  // selector مفقود عمدًا
+  template: `<h1>Hello World</h1>`
+})
+export class MyComponent {
+  constructor() {}
+}
+
+// Component صحيح (للمقارنة)
+@Component({
+  selector: 'app-valid',
+  template: `<p>Valid Component</p>`
+})
+export class ValidComponent {
+  constructor() {}
+}
+@Component({
+  selector: 'app-no-template',
+  standalone: true
+  // template مفقود عمدًا
+})
+export class NoTemplateComponent {}

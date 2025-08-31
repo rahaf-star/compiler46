@@ -1,0 +1,6 @@
+@Component({
+  selector: 'app-no-template',
+  standalone: true
+  // template مفقود عمدًا
+})
+export class NoTemplateComponent {}
